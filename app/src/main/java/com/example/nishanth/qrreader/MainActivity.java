@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
                     scannerView.stopCamera();
                     cameraLayout.removeAllViews();
                     cameraLayout.setVisibility(View.GONE);
-                    //displayTextview.setVisibility(View.VISIBLE);
+                    displayTextview.setVisibility(View.GONE);
                     scanBtn.setText("SCAN");
                 }
             }
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         scannerView.startCamera();
         //cameraLayout.removeAllViews();
         //scannerView.stopCamera();
-        scanBtn.setText("SCAN");
+        //scanBtn.setText("SCAN");
         displayTextview.setVisibility(View.VISIBLE);
 
     }
