@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 
         scannerView = new ZXingScannerView(this);
         scannerView.setResultHandler(this);
+        cameraLayout.addView(scannerView);
+        scannerView.startCamera();
 
         scanBtn.setText("SCAN");
         scanBtn.setOnClickListener(new View.OnClickListener() {
@@ -45,13 +47,11 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
                 if (scanBtn.getText() == "SCAN") {
                     cameraLayout.setVisibility(View.VISIBLE);
                     //displayTextview.setVisibility(View.GONE);
-                    cameraLayout.addView(scannerView);
-                    scannerView.startCamera();
                     displayTextview.setVisibility(View.GONE);
                     scanBtn.setText("CANCEL");
                 } else {
-                    scannerView.stopCamera();
-                    cameraLayout.removeAllViews();
+                    //cameraLayout.removeAllViews();
+                    //scannerView.stopCamera();
                     cameraLayout.setVisibility(View.GONE);
                     displayTextview.setVisibility(View.GONE);
                     scanBtn.setText("SCAN");
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         scannerView.startCamera();
         //cameraLayout.removeAllViews();
         //scannerView.stopCamera();
-        //scanBtn.setText("SCAN");
+        //scanBtn.setText("CANCEL");
         displayTextview.setVisibility(View.VISIBLE);
 
     }
