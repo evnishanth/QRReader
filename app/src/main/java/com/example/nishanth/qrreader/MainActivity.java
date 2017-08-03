@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
     TextView displayTextview;
     ZXingScannerView scannerView;
     LinearLayout cameraLayout;
+    int valueLen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +52,13 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
                     //displayTextview.setVisibility(View.GONE);
                     displayTextview.setVisibility(View.GONE);
                     scanBtn.setText("CANCEL");
-                    infoBtn.setVisibility(View.VISIBLE);
                 } else {
                     //cameraLayout.removeAllViews();
                     //scannerView.stopCamera();
                     cameraLayout.setVisibility(View.GONE);
                     displayTextview.setVisibility(View.GONE);
                     scanBtn.setText("SCAN");
-                    infoBtn.setVisibility(View.GONE);
+                    displayTextview.setText("");
                 }
             }
 
@@ -107,6 +107,11 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         //cameraLayout.removeAllViews();
         //scannerView.stopCamera();
         displayTextview.setVisibility(View.VISIBLE);
+        valueLen = displayTextview.toString().length();
+        if (valueLen == 0)
+            infoBtn.setVisibility(View.GONE);
+        else
+            infoBtn.setVisibility(View.VISIBLE);
 
     }
 
