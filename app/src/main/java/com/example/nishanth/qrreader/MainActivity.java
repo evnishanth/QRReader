@@ -63,16 +63,6 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 
     }
 
-
-    //    public void openScanner(View v){
-//        scannerView = new ZXingScannerView(this);
-////        scannerView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-////                LinearLayout.LayoutParams.MATCH_PARENT));
-//        cameraLayout.setVisibility(View.VISIBLE);
-//        cameraLayout.addView(scannerView);
-//        scannerView.setResultHandler(this);
-//        scannerView.startCamera();
-//    }
     @Override
     protected void onPause() {
         super.onPause();
@@ -80,15 +70,38 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
     }
 
     @Override
+    protected void onResume(){
+        super.onResume();
+        scannerView.resumeCameraPreview(this);
+    }
+
+//    @Override
+//    protected void onStop(){
+//        super.onStop();
+//        scannerView.stopCameraPreview();
+//    }
+
+//    @Override
+//    protected void onRestart(){
+//        super.onRestart();
+//        scannerView.resumeCameraPreview(this);
+//    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        scannerView.stopCamera();
+        scannerView.removeAllViews();
+    }
+    @Override
     public void handleResult(Result result) {
 
         displayTextview.setText(result.toString());
         scannerView.resumeCameraPreview(this);
         cameraLayout.setVisibility(View.VISIBLE);
-        scannerView.startCamera();
+        //scannerView.startCamera();
         //cameraLayout.removeAllViews();
         //scannerView.stopCamera();
-        //scanBtn.setText("CANCEL");
         displayTextview.setVisibility(View.VISIBLE);
 
     }
