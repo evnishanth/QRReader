@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
                     displayTextview.setVisibility(View.GONE);
                     scanBtn.setText("SCAN");
                     displayTextview.setText("");
+                    infoBtn.setVisibility(View.GONE);
                 }
             }
 
