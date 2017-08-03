@@ -20,7 +20,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class MainActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
-    Button scanBtn;
+    Button scanBtn, infoBtn;
     TextView displayTextview;
     ZXingScannerView scannerView;
     LinearLayout cameraLayout;
@@ -31,9 +31,11 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         setContentView(R.layout.activity_main);
 
         scanBtn = (Button) findViewById(R.id.scan_button);
+        infoBtn = (Button) findViewById(R.id.more_info_button);
         displayTextview = (TextView) findViewById(R.id.display_textview);
         cameraLayout = (LinearLayout) findViewById(R.id.camera_layout);
 
+        infoBtn.setVisibility(View.GONE);
         scannerView = new ZXingScannerView(this);
         scannerView.setResultHandler(this);
         cameraLayout.addView(scannerView);
@@ -49,12 +51,14 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
                     //displayTextview.setVisibility(View.GONE);
                     displayTextview.setVisibility(View.GONE);
                     scanBtn.setText("CANCEL");
+                    infoBtn.setVisibility(View.VISIBLE);
                 } else {
                     //cameraLayout.removeAllViews();
                     //scannerView.stopCamera();
                     cameraLayout.setVisibility(View.GONE);
                     displayTextview.setVisibility(View.GONE);
                     scanBtn.setText("SCAN");
+                    infoBtn.setVisibility(View.GONE);
                 }
             }
 
